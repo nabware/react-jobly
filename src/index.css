@@ -5,9 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:cadetblue;
+  background-image: url("https://cdn.trendhunterstatic.com/thumbs/380/cool-backgrounds.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.card {
+  background-color: white;
+  border: solid 1px;
+  text-align: left;
+  padding: 5px;
+  max-width: 600px;
+  margin: 0px auto 10px auto;
+}
+
+.title {
+  font-weight: 700;
 }

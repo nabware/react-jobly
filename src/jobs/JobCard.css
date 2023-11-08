@@ -1,0 +1,11 @@
+.JobCard {
+  border: solid 1px;
+  text-align: left;
+  padding: 5px;
+  max-width: 600px;
+  margin: 0px auto 10px auto;
+}
+
+.title {
+  font-weight: 700;
+}

@@ -25,18 +25,16 @@ function SearchForm({ handleSearch }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="search"
-          placeholder="enter search term..."
-          value={searchInput}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="search"
+        placeholder="enter search term..."
+        value={searchInput}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
   );
 
 }

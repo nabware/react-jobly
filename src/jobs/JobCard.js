@@ -1,16 +1,18 @@
+import "./JobCard.css";
+
 /**
  * Render job card with information
  *
  * Props:
- * - Job information {titile, company, salary, equity}
+ * - Job information {title, company, salary, equity}
  *
- * {JobList, CompanyList } -> JobCard
+ * JobCardList -> JobCard
  */
 function JobCard({ title, company, salary, equity }) {
 
   return (
-    <div>
-      <div>{title}</div>
+    <div className="card">
+      <div className="title">{title}</div>
       {company && <div>{company}</div>}
       <div>Salary: {salary}</div>
       <div>Equity: {equity}</div>

@@ -44,7 +44,7 @@ function CompanyList() {
       {companies.length === 0 && <div>Sorry, no results were found!</div>}
 
       {companies.map(c =>
-        <Link to={`/companies/${c.handle}`}>
+        <Link key={c.handle} to={`/companies/${c.handle}`}>
           <CompanyCard
             key={c.handle}
             name={c.name}

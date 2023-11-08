@@ -58,28 +58,36 @@ class JoblyApi {
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
-    let res = await this.request(`companies/${handle}`);
+    const res = await this.request(`companies/${handle}`);
+
     return res.company;
   }
 
-  /** Get all companies or search for companies */
+  /** Takes optional filters and returns array of companies */
 
   static async getCompanies(data = {}) {
-    let res = await this.request(`companies`, data);
+    if (data.nameLike?.length === 0) delete data.nameLike;
+
+    const res = await this.request(`companies`, data);
+
     return res.companies;
   }
 
-  /** Get details on a job by id */
+  /** Takes jobId and returns job object */
 
   static async getJob(jobId) {
-    let res = await this.request(`jobs/${jobId}`);
+    const res = await this.request(`jobs/${jobId}`);
+
     return res.job;
   }
 
-  /** Gets all jobs or search for jobs */
+  /** Takes optional filters and returns array of jobs */
 
   static async getJobs(data = {}) {
-    let res = await this.request(`jobs`, data);
+    if (data.title?.length === 0) delete data.title;
+
+    const res = await this.request(`jobs`, data);
+
     return res.jobs;
   }
 }
