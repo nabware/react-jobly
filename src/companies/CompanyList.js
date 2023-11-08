@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import CompanyCard from "./CompanyCard";
+import SearchForm from "../common/SearchForm";
 
 /** Displays list of companies
  *
@@ -22,10 +23,21 @@ function CompanyList() {
     getCompanies();
   }, []);
 
+  /** search company */
+  function searchCompany(handle) {
+
+    const companies = JoblyApi.getCompanies({ nameLike: handle });
+
+    setCompanies(companies);
+
+  }
+
+
   if (!companies) return <div>Loading...</div>;
 
   return (
     <div>
+      <SearchForm handleSearch={searchCompany} />
       {companies.map(c =>
         <CompanyCard
           key={c.handle}
@@ -33,6 +45,7 @@ function CompanyList() {
           description={c.description}
           logoUrl={c.logoUrl}
         />
+
       )
       }
     </div>);

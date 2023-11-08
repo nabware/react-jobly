@@ -1,0 +1,44 @@
+import { useState } from 'react';
+
+/**
+ * Form for searching
+ *
+ * Props:
+ * - handleSearch: function to call in parent
+ *
+ * {CompanyList, JobList} -> SearchForm
+ */
+
+function SearchForm({ handleSearch }) {
+  const [searchInput, setSearchInput] = useState("");
+
+  /** Takes DOM event and call parent function and clear form */
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    handleSearch(searchInput);
+    setSearchInput("");
+  }
+
+  /** Update form input */
+  function handleChange(evt) {
+    setSearchInput(evt.target.value);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="search"
+          placeholder="enter search term..."
+          value={searchInput}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+
+}
+
+export default SearchForm;
