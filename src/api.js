@@ -26,6 +26,7 @@ class JoblyApi {
     url.search = (method === "GET")
       ? new URLSearchParams(data).toString()
       : "";
+    //TODO: add consoles
 
     // set to undefined since the body property cannot exist on a GET method
     const body = (method !== "GET")
@@ -82,3 +83,6 @@ class JoblyApi {
     return res.jobs;
   }
 }
+
+
+export default JoblyApi;
