@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "../api";
-import JobList from "../jobs/JobList"
+import JobCardList from "../jobs/JobCardList";
 
 /** Displays company details with jobs
  *
@@ -30,11 +30,11 @@ function CompanyDetail() {
   if (!company) return <div>Loading...</div>;
 
   return (
-  <div>
-    <div>{company.name}</div>
-    <div>{company.description}</div>
-    <div><JobList jobs={company.jobs} /></div>
-  </div>
+    <div>
+      <div>{company.name}</div>
+      <div>{company.description}</div>
+      <div><JobCardList jobs={company.jobs} /></div>
+    </div>
   );
 }
 

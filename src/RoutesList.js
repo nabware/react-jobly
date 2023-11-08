@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import CompanyList from "./companies/CompanyList";
 import CompanyDetail from "./companies/CompanyDetail";
-import JobList from "./jobs/JobList";
+import JobList from "./jobs/JobCardList";
 import PageNotFound from "./common/PageNotFound";
 
 /**
