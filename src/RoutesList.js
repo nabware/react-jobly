@@ -6,7 +6,8 @@ import JobList from "./jobs/JobList";
 import PageNotFound from "./common/PageNotFound";
 
 /**
- * Renders all routes
+ * Renders all routes and PageNotFound if page not found.
+ *
  *
  * App -> RoutesList -> Routes
  */

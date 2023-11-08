@@ -19,7 +19,7 @@ function JobCardList({ jobs }) {
         <JobCard
           key={j.id}
           title={j.title}
-          company={j.companyName}
+          companyName={j.companyName}
           salary={j.salary}
           equity={j.equity}
         />

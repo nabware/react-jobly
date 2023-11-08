@@ -16,7 +16,7 @@ function SearchForm({ handleSearch }) {
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    handleSearch(searchInput);
+    handleSearch(searchInput.trim());
   }
 
   /** Update form input */

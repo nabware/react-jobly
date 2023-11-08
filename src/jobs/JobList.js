@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import SearchForm from "../common/SearchForm";
 import JobCardList from "./JobCardList";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 /** Displays list of jobs
  *
@@ -14,32 +15,25 @@ function JobList() {
   console.log("Rendering JobList...");
 
   /** Loads jobs after initial render */
-
   useEffect(() => {
-    async function getJobs() {
-      const jobs = await JoblyApi.getJobs();
-
-      setJobs(jobs);
-    }
-
-    getJobs();
+    searchJobs();
   }, []);
 
   /** Takes search term and searches jobs */
-  async function searchJobs(searchTerm) {
+  async function searchJobs(searchTerm = "") {
 
     const jobs = await JoblyApi.getJobs({ title: searchTerm });
 
     setJobs(jobs);
   }
 
-  if (!jobs) return <div>Loading...</div>;
+  if (!jobs) return <LoadingSpinner />;
 
   return (
     <div>
       <SearchForm handleSearch={searchJobs} />
 
-      <JobCardList jobs={jobs} />
+      {jobs.length > 0 && <JobCardList jobs={jobs} />}
     </div>
   );
 }

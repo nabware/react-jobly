@@ -8,14 +8,15 @@ import "./JobCard.css";
  *
  * JobCardList -> JobCard
  */
-function JobCard({ title, company, salary, equity }) {
+function JobCard({ title, companyName, salary, equity }) {
+  salary = new Intl.NumberFormat().format(salary);
 
   return (
     <div className="card">
       <div className="title">{title}</div>
-      {company && <div>{company}</div>}
-      <div>Salary: {salary}</div>
-      <div>Equity: {equity}</div>
+      {companyName && <div>{companyName}</div>}
+      {salary && <div>Salary: {salary}</div>}
+      {equity && <div>Equity: {equity}</div>}
     </div>
   );
 

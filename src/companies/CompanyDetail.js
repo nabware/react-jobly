@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "../api";
 import JobCardList from "../jobs/JobCardList";
-import "./CompanyDetail.css"
+import LoadingSpinner from "../common/LoadingSpinner";
+import PageNotFound from "../common/PageNotFound";
+import "./CompanyDetail.css";
 
 /** Displays company details with jobs
  *
@@ -11,6 +13,7 @@ import "./CompanyDetail.css"
 
 function CompanyDetail() {
   const [company, setCompany] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   console.log("Rendering CompanyDetail...");
 
@@ -20,7 +23,14 @@ function CompanyDetail() {
 
   useEffect(() => {
     async function getCompany() {
-      const company = await JoblyApi.getCompany(handle);
+      let company;
+
+      try {
+        company = await JoblyApi.getCompany(handle);
+
+      } catch (errors) {
+        setErrors(errors);
+      }
 
       setCompany(company);
     }
@@ -28,8 +38,9 @@ function CompanyDetail() {
     getCompany();
   }, []);
 
-  if (!company) return <div>Loading...</div>;
+  if (errors.length > 0) return <PageNotFound />;
 
+  if (!company) return <LoadingSpinner />;
   return (
     <div>
       <div className="CompanyDetail">

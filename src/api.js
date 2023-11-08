@@ -26,7 +26,6 @@ class JoblyApi {
     url.search = (method === "GET")
       ? new URLSearchParams(data).toString()
       : "";
-    //TODO: add consoles
 
     // set to undefined since the body property cannot exist on a GET method
     const body = (method !== "GET")
@@ -55,22 +54,29 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Get details on a company by handle. */
+  /** Takes optional filters and returns array of companies */
+  static async getCompanies(filters) {
+    if (filters?.nameLike?.length === 0) delete filters.nameLike;
 
+    const res = await this.request(`companies`, filters);
+
+    return res.companies;
+  }
+
+  /** Get details on a company by handle. */
   static async getCompany(handle) {
     const res = await this.request(`companies/${handle}`);
 
     return res.company;
   }
 
-  /** Takes optional filters and returns array of companies */
+  /** Takes optional filters and returns array of jobs */
+  static async getJobs(filters) {
+    if (filters?.title?.length === 0) delete filters.title;
 
-  static async getCompanies(data = {}) {
-    if (data.nameLike?.length === 0) delete data.nameLike;
+    const res = await this.request(`jobs`, filters);
 
-    const res = await this.request(`companies`, data);
-
-    return res.companies;
+    return res.jobs;
   }
 
   /** Takes jobId and returns job object */
@@ -79,16 +85,6 @@ class JoblyApi {
     const res = await this.request(`jobs/${jobId}`);
 
     return res.job;
-  }
-
-  /** Takes optional filters and returns array of jobs */
-
-  static async getJobs(data = {}) {
-    if (data.title?.length === 0) delete data.title;
-
-    const res = await this.request(`jobs`, data);
-
-    return res.jobs;
   }
 }
 

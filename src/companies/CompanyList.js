@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import JoblyApi from "../api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "../common/SearchForm";
+import LoadingSpinner from "../common/LoadingSpinner";
 import { Link } from "react-router-dom";
 import "./CompanyList.css";
 
-/** Displays list of companies
+/** Displays list of companies based on search term.
  *
  * RoutesList -> CompanyList -> {SearchForm, CompanyCard}
  */
@@ -18,24 +19,18 @@ function CompanyList() {
   /** Loads companies after initial render */
 
   useEffect(() => {
-    async function getCompanies() {
-      const companies = await JoblyApi.getCompanies();
-
-      setCompanies(companies);
-    }
-
-    getCompanies();
+    searchCompanies();
   }, []);
 
   /** Takes search term and searches company */
-  async function searchCompanies(searchTerm) {
+  async function searchCompanies(searchTerm = "") {
 
     const companies = await JoblyApi.getCompanies({ nameLike: searchTerm });
 
     setCompanies(companies);
   }
 
-  if (!companies) return <div>Loading...</div>;
+  if (!companies) return <LoadingSpinner />;
 
   return (
     <div>
