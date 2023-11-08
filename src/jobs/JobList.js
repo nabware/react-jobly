@@ -1,13 +1,22 @@
 /** Displays list of jobs
  *
- * App -> RoutesList -> JobList
+ * Props:
+ * - jobs: Possible array of jobs [{id, title, salary, equity}]
+ *
+ * RoutesList -> JobList -> JobCard
  */
 
 
-function JobList() {
+function JobList({ jobs }) {
   console.log("Rendering JobList...");
 
-  return (<div>Job List</div>);
+  if (jobs.length === 0) return <div>There are no jobs.</div>;
+
+  return (
+    <div>
+      {jobs.map(j => <div key={j.id}>{j.title}</div>)}
+    </div>
+  );
 }
 
 export default JobList;

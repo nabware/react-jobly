@@ -1,6 +1,6 @@
 /** Displays page not found message
  *
- * App -> RoutesList -> PageNotFound
+ * RoutesList -> PageNotFound
 */
 
 function PageNotFound() {

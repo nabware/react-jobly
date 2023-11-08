@@ -2,7 +2,7 @@ import "./CompanyCard.css"
 
 /** Displays company information
  *
- * App -> RoutesList -> CompanyList -> CompanyCard
+ * CompanyList -> CompanyCard
  */
 
 function CompanyCard({ name, logoUrl, description }) {

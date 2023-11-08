@@ -12,11 +12,11 @@ import { useState } from 'react';
 function SearchForm({ handleSearch }) {
   const [searchInput, setSearchInput] = useState("");
 
-  /** Takes DOM event and call parent function and clear form */
+  /** Takes DOM event and call parent function */
   function handleSubmit(evt) {
     evt.preventDefault();
+
     handleSearch(searchInput);
-    setSearchInput("");
   }
 
   /** Update form input */
