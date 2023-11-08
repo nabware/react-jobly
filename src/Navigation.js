@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 
 /**
  * Renders links to routes
+ *
+ * App -> Navigation
  */
 
 function Navigation() {
-
   return (
     <div>
       <Link to="/">Jobly</Link> |
@@ -16,4 +17,3 @@ function Navigation() {
 }
 
 export default Navigation;
-//TODO: add flow of components

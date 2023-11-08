@@ -1,21 +1,26 @@
 import { Routes, Route } from "react-router-dom";
+import Homepage from "./Homepage";
+import CompanyList from "./companies/CompanyList";
+import CompanyDetail from "./companies/CompanyDetail";
+import JobList from "./jobs/JobList";
+import PageNotFound from "./common/PageNotFound";
 
 /**
  * Renders all routes
+ *
+ * App -> RoutesList
  */
 
 function RoutesList() {
   return (
     <Routes>
-      <Route path="/" element={<div>Home</div>} />
-      <Route path="/companies" element={<div>Companies</div>} />
-      <Route path="/companies/:handle" element={<div>company</div>} />
-      <Route path="/jobs" element={<div>Jobs</div>} />
-      <Route path="*" element={<div>Page not found</div>} />
+      <Route path="/" element={<Homepage />} />
+      <Route path="/companies" element={<CompanyList />} />
+      <Route path="/companies/:handle" element={<CompanyDetail />} />
+      <Route path="/jobs" element={<JobList />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }
 
 export default RoutesList;
-//TODO: add flow of components
-//TODO: add components files and placeholders in there(inlcuding not found)
