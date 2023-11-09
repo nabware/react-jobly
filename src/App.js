@@ -21,17 +21,32 @@ function App() {
   const [user, setUser] = useState(null);
 
   /** login */
-  async function login({ username, password }) {
+  async function login(data) {
     try {
-      const token = await JoblyApi.login(username, password);
+      const token = await JoblyApi.login(data);
 
       setToken(token);
       localStorage.setItem("token", token);
 
       return [];
 
-    } catch (error) {
-      return [error];
+    } catch (errors) {
+      return errors;
+    }
+  }
+
+  /** Signup */
+  async function signup(data) {
+    try {
+      const token = await JoblyApi.signup(data);
+
+      setToken(token);
+      localStorage.setItem("token", token);
+
+      return [];
+
+    } catch (errors) {
+      return errors;
     }
   }
 
@@ -47,7 +62,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navigation logout={logout} />
-          <RoutesList login={login} />
+          <RoutesList login={login} signup={signup} />
         </BrowserRouter>
       </div>
     </userContext.Provider>

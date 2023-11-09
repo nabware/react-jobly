@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { redirect, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Alert from "../common/Alert";
 import { useContext } from "react";
 import userContext from "../userContext";
@@ -11,6 +11,7 @@ import userContext from "../userContext";
  *
  * State:
  * - formData: {username, password}
+ * - errors: [error, ...]
  */
 
 function LoginForm({ login }) {
@@ -59,8 +60,8 @@ function LoginForm({ login }) {
           onChange={handleChange} />
         <button type="submit">Login</button>
       </form>
-
-      <Alert messages={errors} className="alert alert-danger" />
+      {errors.length > 0 &&
+        <Alert messages={errors} className="alert alert-danger" />}
     </div>
   );
 }

@@ -5,12 +5,12 @@
  * - className: "alert alert-danger"
  */
 
-function Alert({messages, className}) {
+function Alert({ messages, className }) {
   return (
-  <div>
-    {messages.map((m, i) =>
-    <div key={i} className={className}>{m}</div>)}
-  </div>
+    <div className={className}>
+      {messages.map((m, i) =>
+        <div key={i} >{m}</div>)}
+    </div>
   );
 }
 
