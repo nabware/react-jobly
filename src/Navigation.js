@@ -3,12 +3,12 @@ import { useContext } from "react";
 import userContext from "./userContext";
 
 /**
- * Renders links to routes
+ * Renders links to routes for anon and logged in users
  *
  * App -> Navigation
  */
 
-function Navigation() {
+function Navigation({logout}) {
   const { user, token } = useContext(userContext);
 
   if (!token) {
@@ -27,6 +27,7 @@ function Navigation() {
       <Link to="/companies">Companies</Link> |
       <Link to="/jobs">Jobs</Link>
       <Link to="/profile">Profile</Link>
+      <Link onClick={logout}>Log out</Link>
     </div>
   );
 }

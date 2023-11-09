@@ -16,20 +16,37 @@ import JoblyApi from "./api";
  */
 
 function App() {
-  const [token, setToken] = useState(null);
+  const storedToken = localStorage.getItem("token");
+  const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
 
   /** login */
   async function login({ username, password }) {
-    const token = await JoblyApi.login(username, password);
-    setToken(token);
+    try {
+      const token = await JoblyApi.login(username, password);
+
+      setToken(token);
+      localStorage.setItem("token", token);
+
+      return [];
+
+    } catch (error) {
+      return [error];
+    }
+  }
+
+  /** logout */
+  function logout() {
+    localStorage.clear();
+    setToken(null);
+    setUser(null);
   }
 
   return (
     <userContext.Provider value={{ user, token }}>
       <div className="App">
         <BrowserRouter>
-          <Navigation />
+          <Navigation logout={logout} />
           <RoutesList login={login} />
         </BrowserRouter>
       </div>
