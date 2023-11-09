@@ -27,9 +27,7 @@ function LoginForm({ login }) {
 
     const errors = await login(formData);
 
-    if (errors.length > 0) {
-      setErrors(errors);
-    }
+    setErrors(errors);
   };
 
   function handleChange(evt) {
@@ -54,6 +52,7 @@ function LoginForm({ login }) {
         <label htmlFor="password">Password:</label>
         <input
           type="password"
+          autoComplete="off"
           placeholder="password"
           name="password"
           value={formData.password}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import Navigation from "./Navigation";
@@ -56,6 +56,25 @@ function App() {
     setToken(null);
     setUser(null);
   }
+
+  useEffect(() => {
+    JoblyApi.token = token;
+
+    if (!token) return;
+
+    async function getUser() {
+      const payload = token.split(".")[1];
+      const decodedPayload = atob(payload);
+      const { username } = JSON.parse(decodedPayload);
+
+      const user = await JoblyApi.getUser(username);
+
+      setUser(user);
+    }
+
+    getUser();
+
+  }, [token]);
 
   return (
     <userContext.Provider value={{ user, token }}>

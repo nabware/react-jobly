@@ -10,15 +10,15 @@ import Alert from "../common/Alert";
  *Props:
  * - signup: signup function
  *
- * - formData: {username, password, firstname, lastname, email}
+ * - formData: {username, password, firstName, lastName, email}
  * - errors: [error, ...]
  */
 function SignupForm({ signup }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: ""
   });
 
@@ -30,9 +30,7 @@ function SignupForm({ signup }) {
 
     const errors = await signup(formData);
 
-    if (errors.length > 0) {
-      setErrors(errors);
-    }
+    setErrors(errors);
   };
 
   function handleChange(evt) {
@@ -57,7 +55,8 @@ function SignupForm({ signup }) {
 
         <label htmlFor="">Password:</label>
         <input
-          type="text"
+          type="password"
+          autoComplete="off"
           placeholder="password"
           name="password"
           value={formData.password}
@@ -67,16 +66,16 @@ function SignupForm({ signup }) {
         <input
           type="text"
           placeholder="firstname"
-          name="firstname"
-          value={formData.firstname}
+          name="firstName"
+          value={formData.firstName}
           onChange={handleChange} />
 
         <label htmlFor="">Last Name:</label>
         <input
           type="text"
           placeholder="lastname"
-          name="lastname"
-          value={formData.lastname}
+          name="lastName"
+          value={formData.lastName}
           onChange={handleChange} />
 
         <label htmlFor="">Email:</label>
