@@ -33,7 +33,7 @@ function JobList() {
     <div>
       <SearchForm handleSearch={searchJobs} />
 
-      {jobs.length > 0 && <JobCardList jobs={jobs} />}
+      <JobCardList jobs={jobs} />
     </div>
   );
 }

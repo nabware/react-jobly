@@ -15,14 +15,14 @@ import ProfileForm from "./user/ProfileForm";
  * App -> RoutesList -> Routes
  */
 
-function RoutesList() {
+function RoutesList({ login }) {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
-      <Route path="/login" element={<LoginForm />} />
+      <Route path="/login" element={<LoginForm login={login} />} />
       <Route path="/signup" element={<SignupForm />} />
       <Route path="/profile" element={<ProfileForm />} />
       <Route path="*" element={<PageNotFound />} />
