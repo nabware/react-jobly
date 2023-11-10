@@ -26,7 +26,9 @@ function LoginForm({ login }) {
   });
   const [errors, setErrors] = useState([]);
   const { user } = useContext(userContext);
-// TODO: docstrings for internal functions
+
+  /** Takes DOM event and calls login function and handles errors. */
+
   async function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -37,6 +39,8 @@ function LoginForm({ login }) {
       setErrors(errors);
     }
   };
+
+  /** Takes DOM event and sets formData state. */
 
   function handleChange(evt) {
     const { name, value } = evt.target;

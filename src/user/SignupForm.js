@@ -30,7 +30,9 @@ function SignupForm({ signup }) {
 
   const [errors, setErrors] = useState([]);
   const { user } = useContext(userContext);
-//TODO: add docstring for internal functions
+
+  /** Takes DOM event and calls signup function and handles errors. */
+
   async function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -41,6 +43,8 @@ function SignupForm({ signup }) {
       setErrors(errors);
     }
   };
+
+  /** Takes DOM event and sets formData state. */
 
   function handleChange(evt) {
     const { name, value } = evt.target;
