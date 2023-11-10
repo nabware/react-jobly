@@ -55,7 +55,7 @@ function App() {
 
   }, [token]);
 
-  /** Takes login form data, sets token, and returns array of errors. */
+  /** Takes login form data and sets token */
 
   async function login(data) {
     const token = await JoblyApi.login(data);
@@ -63,7 +63,7 @@ function App() {
     setToken(token);
   }
 
-  /** Takes signup form data, sets token, and returns array of errors. */
+  /** Takes signup form data and sets token */
 
   async function signup(data) {
     const token = await JoblyApi.signup(data);
@@ -77,6 +77,13 @@ function App() {
     setToken(null);
   }
 
+  /** Takes profile form data and sets user */
+  async function updateProfile(username, data) {
+    const updatedUser = await JoblyApi.updateProfile(username, data);
+
+    setUser(currUser => ({ ...currUser, ...updatedUser }));
+  }
+
   if (token && !user) return <LoadingSpinner />;
 
   return (
@@ -84,7 +91,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navigation logout={logout} />
-          <RoutesList login={login} signup={signup} />
+          <RoutesList login={login} signup={signup} updateProfile={updateProfile} />
         </BrowserRouter>
       </div>
     </userContext.Provider>

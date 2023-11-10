@@ -30,6 +30,7 @@ class JoblyApi {
       ? JSON.stringify(data)
       : undefined;
 
+
     const resp = await fetch(url, { method, body, headers });
 
     //fetch API does not throw an error, have to dig into the resp for msgs
@@ -91,7 +92,7 @@ class JoblyApi {
   /** Takes login form data and returns token. */
 
   static async login(data) {
-    const res = await this.request(`auth/token`, data, "post");
+    const res = await this.request(`auth/token`, data, "POST");
 
     return res.token;
   }
@@ -99,18 +100,25 @@ class JoblyApi {
   /** Takes signup form data and returns token. */
 
   static async signup(data) {
-    const res = await this.request(`auth/register`, data, "post");
+    const res = await this.request(`auth/register`, data, "POST");
 
     return res.token;
   }
 
-    /** Takes username and returns user object */
+  /** Takes username and returns user object */
 
-    static async getUser(username) {
-      const res = await this.request(`users/${username}`);
+  static async getUser(username) {
+    const res = await this.request(`users/${username}`);
 
-      return res.user;
-    }
+    return res.user;
+  }
+
+  /** Takes username and profile form data to update user profiles */
+  static async updateProfile(username, data) {
+    const res = await this.request(`users/${username}`, data, "PATCH");
+
+    return res.user;
+  }
 
 }
 

@@ -23,7 +23,7 @@ import userContext from "./userContext";
  * App -> RoutesList -> Routes
  */
 
-function RoutesList({ login, signup }) {
+function RoutesList({ login, signup, updateProfile }) {
   const { user } = useContext(userContext);
 
   if (!user) {
@@ -45,7 +45,7 @@ function RoutesList({ login, signup }) {
       <Route path="/jobs" element={<JobList />} />
       <Route path="/login" element={<LoginForm login={login} />} />
       <Route path="/signup" element={<SignupForm signup={signup} />} />
-      <Route path="/profile" element={<ProfileForm />} />
+      <Route path="/profile" element={<ProfileForm updateProfile={updateProfile} />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
