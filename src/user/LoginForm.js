@@ -53,25 +53,31 @@ function LoginForm({ login }) {
   if (user) return <Navigate replace to="/" />;
 
   return (
-    <div className="container">
+    <div className="container text-start">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          placeholder="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange} />
+        <div className="form-group mb-3">
+          <label htmlFor="username">Username:</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange} />
+        </div>
 
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          autoComplete="off"
-          placeholder="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange} />
-        <button type="submit">Login</button>
+        <div className="form-group mb-3">
+          <label htmlFor="password">Password:</label>
+          <input
+            className="form-control"
+            type="password"
+            autoComplete="off"
+            placeholder="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange} />
+        </div>
+        <button type="submit" className="btn btn-primary mb-3">Login</button>
       </form>
 
       {alerts.length > 0 && <Alert messages={alerts} />}

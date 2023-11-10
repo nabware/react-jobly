@@ -13,7 +13,7 @@ function Homepage() {
   console.log("Rendering Homepage...");
 
   return (
-    <div>
+    <div className="container">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {

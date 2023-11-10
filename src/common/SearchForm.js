@@ -25,15 +25,22 @@ function SearchForm({ handleSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
-      <input
-        type="text"
-        name="search"
-        placeholder="enter search term..."
-        value={searchInput}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
+    <form onSubmit={handleSubmit} className="mb-4" style={{ maxWidth: "500px", margin: "auto" }}>
+      <div className="input-group mb-3">
+        <input
+          className="form-control"
+          type="text"
+          name="search"
+          placeholder="enter search term..."
+          value={searchInput}
+          onChange={handleChange}
+        />
+        <div className="input-group-append">
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+      </div>
+
+
     </form>
   );
 

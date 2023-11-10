@@ -57,7 +57,7 @@ function ProfileForm({ updateProfile }) {
   return (
     <div className="container text-start">
       <form onSubmit={handleSubmit}>
-        <div class="form-group mb-3">
+        <div className="form-group mb-3">
           <label htmlFor="username">Username</label>
           <input
             className="form-control"

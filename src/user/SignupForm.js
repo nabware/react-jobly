@@ -57,49 +57,65 @@ function SignupForm({ signup }) {
   if (user) return <Navigate replace to="/" />;
 
   return (
-    <div className="container">
+    <div className="container text-start">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          placeholder="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange} />
+        <div className="form-group mb-3">
+          <label htmlFor="username">Username:</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Password:</label>
-        <input
-          type="password"
-          autoComplete="off"
-          placeholder="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange} />
+        <div className="form-group mb-3">
+          <label htmlFor="">Password:</label>
+          <input
+            className="form-control"
+            type="password"
+            autoComplete="off"
+            placeholder="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">First Name:</label>
-        <input
-          type="text"
-          placeholder="firstname"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange} />
+        <div className="form-group mb-3">
+          <label htmlFor="">First Name:</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="firstname"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Last Name:</label>
-        <input
-          type="text"
-          placeholder="lastname"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange} />
+        <div className="form-group mb-3">
+          <label htmlFor="">Last Name:</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="lastname"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Email:</label>
-        <input
-          type="text"
-          placeholder="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <div className="form-group mb-3">
+          <label htmlFor="">Email:</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange} />
+        </div>
+
+        <button type="submit" className="btn btn-primary mb-3">Submit</button>
       </form>
 
       {alerts.length > 0 && <Alert messages={alerts} />}
