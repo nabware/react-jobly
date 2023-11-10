@@ -6,6 +6,7 @@ import RoutesList from "./RoutesList";
 import userContext from "./userContext";
 import JoblyApi from "./api";
 import { jwtDecode } from "jwt-decode";
+import LoadingSpinner from "./common/LoadingSpinner";
 
 /** Renders Navigation and RoutesList and handles login, signup, and logout.
  *
@@ -20,6 +21,7 @@ function App() {
   const storedToken = localStorage.getItem("token");
   const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
+  const [hasLoaded, setHasLoaded] = useState(!Boolean(token));
 
   useEffect(() => {
     JoblyApi.token = token;
@@ -47,6 +49,7 @@ function App() {
       } catch (errors) {
         setToken(null);
       }
+      setHasLoaded(true);
     }
 
     getUser();
@@ -74,6 +77,8 @@ function App() {
   function logout() {
     setToken(null);
   }
+
+  if (!hasLoaded) return <LoadingSpinner />;
 
   return (
     <userContext.Provider value={{ user }}>

@@ -41,6 +41,7 @@ function CompanyDetail() {
   if (errors.length > 0) return <PageNotFound />;
 
   if (!company) return <LoadingSpinner />;
+
   return (
     <div>
       <div className="CompanyDetail">
