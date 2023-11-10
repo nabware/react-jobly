@@ -1,15 +1,15 @@
 /** Displays alert messages
  *
  * Props:
- * - messages: ["Invalid username", ...]
+ * - messages: [{text: "Invalid username", type:"danger"}, ...]
  * - className: "alert alert-danger"
  */
 
-function Alert({ messages, className }) {
+function Alert({ messages }) {
   return (
-    <div className={className}>
+    <div>
       {messages.map((m, i) =>
-        <div key={i} >{m}</div>)}
+        <div key={i} className={`alert alert-${m.type}`}>{m.text}</div>)}
     </div>
   );
 }

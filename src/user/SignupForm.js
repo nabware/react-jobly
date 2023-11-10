@@ -12,7 +12,7 @@ import Alert from "../common/Alert";
  *
  * State:
  * - formData: {username, password, firstName, lastName, email}
- * - errors: [error, ...]
+ * - alerts: [{text: "Success", type: "success"}, ...]
  *
  * Context:
  * - user
@@ -28,7 +28,7 @@ function SignupForm({ signup }) {
     email: ""
   });
 
-  const [errors, setErrors] = useState([]);
+  const [alerts, setAlerts] = useState([]);
   const { user } = useContext(userContext);
 
   /** Takes DOM event and calls signup function and handles errors. */
@@ -40,7 +40,7 @@ function SignupForm({ signup }) {
       await signup(formData);
 
     } catch (errors) {
-      setErrors(errors);
+      setAlerts(errors.map(e => ({ text: e, type: "danger" })));
     }
   };
 
@@ -102,8 +102,7 @@ function SignupForm({ signup }) {
         <button type="submit">Submit</button>
       </form>
 
-      {errors.length > 0 &&
-        <Alert messages={errors} className="alert alert-danger" />}
+      {alerts.length > 0 && <Alert messages={alerts} />}
 
     </div>);
 }

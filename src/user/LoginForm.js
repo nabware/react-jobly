@@ -11,7 +11,7 @@ import userContext from "../userContext";
  *
  * State:
  * - formData: {username, password}
- * - errors: [error, ...]
+ * - alerts: [{text: "Success", type: "success"}, ...]
  *
  * Context:
  * - user
@@ -24,7 +24,7 @@ function LoginForm({ login }) {
     username: "",
     password: ""
   });
-  const [errors, setErrors] = useState([]);
+  const [alerts, setAlerts] = useState([]);
   const { user } = useContext(userContext);
 
   /** Takes DOM event and calls login function and handles errors. */
@@ -36,7 +36,7 @@ function LoginForm({ login }) {
       await login(formData);
 
     } catch (errors) {
-      setErrors(errors);
+      setAlerts(errors.map(e => ({ text: e, type: "danger" })));
     }
   };
 
@@ -74,8 +74,8 @@ function LoginForm({ login }) {
         <button type="submit">Login</button>
       </form>
 
-      {errors.length > 0 &&
-        <Alert messages={errors} className="alert alert-danger" />}
+      {alerts.length > 0 && <Alert messages={alerts} />}
+
     </div>
   );
 }
