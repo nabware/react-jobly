@@ -1,8 +1,7 @@
 /** Displays alert messages
  *
  * Props:
- * - messages: [{text: "Invalid username", type:"danger"}, ...]
- * - className: "alert alert-danger"
+ * - messages: [{text: "Invalid username", type: "danger"}, ...]
  */
 
 function Alert({ messages }) {
