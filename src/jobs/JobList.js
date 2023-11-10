@@ -6,6 +6,9 @@ import LoadingSpinner from "../common/LoadingSpinner";
 
 /** Displays list of jobs
  *
+ * State:
+ * - jobs: [{id, title, salary, equity, company}]
+ *
  * RouteList -> JobList -> {SearchForm, JobCardList}
  */
 

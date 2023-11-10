@@ -5,18 +5,17 @@ import SearchForm from "../common/SearchForm";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { Link } from "react-router-dom";
 import "./CompanyList.css";
-import { useContext } from "react";
-import userContext from "../userContext";
-import { Navigate } from "react-router-dom";
 
 /** Displays list of companies based on search term.
+ *
+ * State:
+ * - companies: [{handle, name, description, logoUrl}]
  *
  * RoutesList -> CompanyList -> {SearchForm, CompanyCard}
  */
 
 function CompanyList() {
   const [companies, setCompanies] = useState(null);
-  const { user } = useContext(userContext);
 
   console.log("Rendering CompanyList...");
 
@@ -32,9 +31,6 @@ function CompanyList() {
     const companies = await JoblyApi.getCompanies({ nameLike: searchTerm });
 
     setCompanies(companies);
-  }
-  if (!user) {
-    return <Navigate replace to="/" />;
   }
 
   if (!companies) return <LoadingSpinner />;

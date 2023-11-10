@@ -7,15 +7,36 @@ import PageNotFound from "./common/PageNotFound";
 import LoginForm from "./user/LoginForm";
 import SignupForm from "./user/SignupForm";
 import ProfileForm from "./user/ProfileForm";
+import { useContext } from "react";
+import userContext from "./userContext";
 
 /**
  * Renders all routes and PageNotFound if page not found.
  *
+ * Props:
+ * - login: login function
+ * - signup: signup function
+ *
+ * Context:
+ * - user
  *
  * App -> RoutesList -> Routes
  */
 
 function RoutesList({ login, signup }) {
+  const { user } = useContext(userContext);
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginForm login={login} />} />
+        <Route path="/signup" element={<SignupForm signup={signup} />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    );
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />

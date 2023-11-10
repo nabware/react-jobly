@@ -13,6 +13,7 @@ import LoadingSpinner from "./common/LoadingSpinner";
  * State:
  * - user: {}
  * - token: ""
+ * - hasLoaded: true/false
  *
  * App -> {Navigation, RoutesList}
  */
@@ -21,7 +22,6 @@ function App() {
   const storedToken = localStorage.getItem("token");
   const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
-  const [hasLoaded, setHasLoaded] = useState(!Boolean(token));
 
   useEffect(() => {
     JoblyApi.token = token;
@@ -49,7 +49,6 @@ function App() {
       } catch (errors) {
         setToken(null);
       }
-      setHasLoaded(true);
     }
 
     getUser();
@@ -78,7 +77,7 @@ function App() {
     setToken(null);
   }
 
-  if (!hasLoaded) return <LoadingSpinner />;
+  if (token && !user) return <LoadingSpinner />;
 
   return (
     <userContext.Provider value={{ user }}>

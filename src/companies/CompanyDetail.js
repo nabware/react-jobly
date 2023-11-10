@@ -8,6 +8,11 @@ import "./CompanyDetail.css";
 
 /** Displays company details with jobs
  *
+ * State:
+ * - company: {handle, name, description, jobs}
+ * - errors: ["", ...]
+ *
+ *
  * RoutesList -> CompanyDetail -> JobList
 */
 
