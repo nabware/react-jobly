@@ -36,7 +36,7 @@ function CompanyList() {
   if (!companies) return <LoadingSpinner />;
 
   return (
-    <div>
+    <div className="container">
       <SearchForm handleSearch={searchCompanies} />
 
       {companies.length === 0 && <div>Sorry, no results were found!</div>}

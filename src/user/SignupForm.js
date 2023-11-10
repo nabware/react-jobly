@@ -57,7 +57,7 @@ function SignupForm({ signup }) {
   if (user) return <Navigate replace to="/" />;
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input

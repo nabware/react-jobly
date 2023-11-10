@@ -48,7 +48,7 @@ function CompanyDetail() {
   if (!company) return <LoadingSpinner />;
 
   return (
-    <div>
+    <div className="container">
       <div className="CompanyDetail">
         <div className="title">{company.name}</div>
         <div>{company.description}</div>

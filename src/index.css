@@ -30,6 +30,19 @@ code {
   font-weight: 700;
 }
 
-/* .danger {
-  color: red;
-} */
+.navbar {
+  padding: 10px;
+  background-color: white;
+}
+
+.navbar-right {
+  float: right;
+}
+
+.navbar-right-item {
+  margin-left: 10px;
+}
+
+.container {
+  padding: 20px;
+}

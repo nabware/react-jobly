@@ -25,7 +25,7 @@ function SearchForm({ handleSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mb-4">
       <input
         type="text"
         name="search"

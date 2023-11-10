@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import userContext from "./userContext";
 
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 /**
  * Renders links to routes for anon and logged in users
  *
@@ -19,21 +24,25 @@ function Navigation({ logout }) {
 
   if (!user) {
     return (
-      <div>
-        <Link to="/">Jobly</Link> |
-        <Link to="/login">Login</Link> |
-        <Link to="/signup">Sign Up</Link>
+      <div className="navbar">
+        <Link to="/">Jobly</Link>
+        <div className="navbar-right">
+          <Link to="/login" className="navbar-right-item">Login</Link>
+          <Link to="/signup" className="navbar-right-item">Signup</Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <Link to="/">Jobly</Link> |
-      <Link to="/companies">Companies</Link> |
-      <Link to="/jobs">Jobs</Link> |
-      <Link to="/profile">Profile</Link> |
-      <Link onClick={logout}>Log out {user.username}</Link>
+    <div className="navbar">
+      <Link to="/">Jobly</Link>
+      <div className="navbar-right">
+        <Link to="/companies" className="navbar-right-item">Companies</Link>
+        <Link to="/jobs" className="navbar-right-item">Jobs</Link>
+        <Link to="/profile" className="navbar-right-item">Profile</Link>
+        <Link onClick={logout} className="navbar-right-item">Log out {user.username}</Link>
+      </div>
     </div>
   );
 }

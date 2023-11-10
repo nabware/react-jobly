@@ -33,7 +33,7 @@ function JobList() {
   if (!jobs) return <LoadingSpinner />;
 
   return (
-    <div>
+    <div className="container">
       <SearchForm handleSearch={searchJobs} />
 
       <JobCardList jobs={jobs} />
