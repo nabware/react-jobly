@@ -101,7 +101,7 @@ function ProfileForm({ updateProfile }) {
             value={formData.email}
             onChange={handleChange} />
         </div>
-        <button type="submit" className="btn btn-primary mb-3">Submit</button>
+        <button type="submit" className="btn btn-primary mb-3">Update</button>
       </form>
 
       {alerts.length > 0 && <Alert messages={alerts} />}

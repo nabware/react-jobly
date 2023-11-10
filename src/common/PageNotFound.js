@@ -6,7 +6,7 @@
 function PageNotFound() {
   console.log("Rendering PageNotFound...");
 
-  return (<div>Page not found.</div>);
+  return (<div className="container h1">Page not found</div>);
 }
 
 export default PageNotFound;

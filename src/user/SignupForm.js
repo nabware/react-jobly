@@ -60,7 +60,7 @@ function SignupForm({ signup }) {
     <div className="container text-start">
       <form onSubmit={handleSubmit}>
         <div className="form-group mb-3">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Username</label>
           <input
             className="form-control"
             type="text"
@@ -71,7 +71,7 @@ function SignupForm({ signup }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="">Password:</label>
+          <label htmlFor="">Password</label>
           <input
             className="form-control"
             type="password"
@@ -83,7 +83,7 @@ function SignupForm({ signup }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="">First Name:</label>
+          <label htmlFor="">First Name</label>
           <input
             className="form-control"
             type="text"
@@ -94,7 +94,7 @@ function SignupForm({ signup }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="">Last Name:</label>
+          <label htmlFor="">Last Name</label>
           <input
             className="form-control"
             type="text"
@@ -105,7 +105,7 @@ function SignupForm({ signup }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="">Email:</label>
+          <label htmlFor="">Email</label>
           <input
             className="form-control"
             type="text"
@@ -115,7 +115,7 @@ function SignupForm({ signup }) {
             onChange={handleChange} />
         </div>
 
-        <button type="submit" className="btn btn-primary mb-3">Submit</button>
+        <button type="submit" className="btn btn-primary mb-3">Signup</button>
       </form>
 
       {alerts.length > 0 && <Alert messages={alerts} />}

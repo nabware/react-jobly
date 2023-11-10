@@ -1,5 +1,3 @@
-import "./CompanyCard.css"
-
 /** Displays company information
  *
  * CompanyList -> CompanyCard
@@ -10,7 +8,7 @@ function CompanyCard({ name, logoUrl, description }) {
 
   return (
     <div className="card">
-      <div className="title">{name}<img src={logoUrl} /></div>
+      <div className="title">{name}<img className="company-card-img" src={logoUrl} /></div>
       <div>{description}</div>
     </div>
   );

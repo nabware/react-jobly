@@ -25,7 +25,7 @@ function SearchForm({ handleSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4" style={{ maxWidth: "500px", margin: "auto" }}>
+    <form onSubmit={handleSubmit} className="header-card mb-4">
       <div className="input-group mb-3">
         <input
           className="form-control"
@@ -36,7 +36,7 @@ function SearchForm({ handleSearch }) {
           onChange={handleChange}
         />
         <div className="input-group-append">
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Search</button>
         </div>
       </div>
 

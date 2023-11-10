@@ -56,7 +56,7 @@ function LoginForm({ login }) {
     <div className="container text-start">
       <form onSubmit={handleSubmit}>
         <div className="form-group mb-3">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Username</label>
           <input
             className="form-control"
             type="text"
@@ -67,7 +67,7 @@ function LoginForm({ login }) {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <input
             className="form-control"
             type="password"

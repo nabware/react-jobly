@@ -4,7 +4,6 @@ import CompanyCard from "./CompanyCard";
 import SearchForm from "../common/SearchForm";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { Link } from "react-router-dom";
-import "./CompanyList.css";
 
 /** Displays list of companies based on search term.
  *

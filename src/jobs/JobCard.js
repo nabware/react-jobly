@@ -1,5 +1,3 @@
-import "./JobCard.css";
-
 /**
  * Render job card with information
  *

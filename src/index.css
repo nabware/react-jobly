@@ -5,11 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:cadetblue;
-  background-image: url("https://cdn.trendhunterstatic.com/thumbs/380/cool-backgrounds.jpeg");
+  background-image: url("../public/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  color: white;
 }
 
 code {
@@ -17,17 +17,39 @@ code {
     monospace;
 }
 
+.header-card {
+  max-width: 600px;
+  margin: auto;
+}
+
+form {
+  max-width: 600px;
+  margin: auto;
+}
+
+.alert {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
 .card {
   background-color: white;
-  border: solid 1px;
+  border: none;
+  box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000003d;
   text-align: left;
-  padding: 5px;
+  padding: 10px;
   max-width: 600px;
   margin: 0px auto 10px auto;
 }
 
 .title {
   font-weight: 700;
+}
+
+.company-card-img {
+  float: right;
+  max-width: 50px;
 }
 
 .navbar {
@@ -45,4 +67,59 @@ code {
 
 .container {
   padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: grey;
+}
+
+a:hover {
+  color: black;
+}
+
+.homepage {
+  margin-top: 450px;
+}
+
+.active {
+  font-weight: bold;
+  color: black;
+}
+
+.lds-ring {
+  margin-top: 450px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

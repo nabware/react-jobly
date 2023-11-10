@@ -4,7 +4,6 @@ import JoblyApi from "../api";
 import JobCardList from "../jobs/JobCardList";
 import LoadingSpinner from "../common/LoadingSpinner";
 import PageNotFound from "../common/PageNotFound";
-import "./CompanyDetail.css";
 
 /** Displays company details with jobs
  *
@@ -48,8 +47,8 @@ function CompanyDetail() {
   if (!company) return <LoadingSpinner />;
 
   return (
-    <div className="container">
-      <div className="CompanyDetail">
+    <div className="container header-card">
+      <div className="text-start mb-2 p-2">
         <div className="title">{company.name}</div>
         <div>{company.description}</div>
       </div>
