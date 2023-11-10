@@ -5,8 +5,9 @@ import Navigation from "./Navigation";
 import RoutesList from "./RoutesList";
 import userContext from "./userContext";
 import JoblyApi from "./api";
+import { jwtDecode } from "jwt-decode";
 
-/** Renders Navigation and RoutesList
+/** Renders Navigation and RoutesList and handles login, signup, and logout.
  *
  * State:
  * - user: {}
@@ -20,64 +21,62 @@ function App() {
   const [token, setToken] = useState(storedToken);
   const [user, setUser] = useState(null);
 
-  /** login */
-  async function login(data) {
-    try {
-      const token = await JoblyApi.login(data);
-
-      setToken(token);
-      localStorage.setItem("token", token);
-
-      return [];
-
-    } catch (errors) {
-      return errors;
-    }
-  }
-
-  /** Signup */
-  async function signup(data) {
-    try {
-      const token = await JoblyApi.signup(data);
-
-      setToken(token);
-      localStorage.setItem("token", token);
-
-      return [];
-
-    } catch (errors) {
-      return errors;
-    }
-  }
-
-  /** logout */
-  function logout() {
-    localStorage.clear();
-    setToken(null);
-    setUser(null);
-  }
-
   useEffect(() => {
     JoblyApi.token = token;
 
-    if (!token) return;
+    if (!token) {
+      localStorage.clear();
+      setUser(null);
+
+      return;
+    };
+
+    localStorage.setItem("token", token);
+
+    /** Gets username from token, gets user object, and sets user. */
 
     async function getUser() {
-      const payload = token.split(".")[1];
-      const decodedPayload = atob(payload);
-      const { username } = JSON.parse(decodedPayload);
+      const decoded = jwtDecode(token);
+      const { username } = decoded;
 
-      const user = await JoblyApi.getUser(username);
+      try {
+        const user = await JoblyApi.getUser(username);
 
-      setUser(user);
+        setUser(user);
+
+      } catch (errors) {
+        setToken(null);
+      }
     }
 
     getUser();
 
   }, [token]);
 
+  /** Takes login form data, sets token, and returns array of errors. */
+
+  async function login(data) {
+    const token = await JoblyApi.login(data);
+
+    setToken(token);
+  }
+
+  /** Takes signup form data, sets token, and returns array of errors. */
+
+  async function signup(data) {
+    const token = await JoblyApi.signup(data);
+
+    setToken(token);
+  }
+
+  /** Clears token and user. */
+
+  function logout() {
+    setToken(null);
+  }
+
   return (
-    <userContext.Provider value={{ user, token }}>
+    <userContext.Provider value={{ user }}>
       <div className="App">
         <BrowserRouter>
           <Navigation logout={logout} />

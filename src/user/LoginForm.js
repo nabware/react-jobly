@@ -4,7 +4,7 @@ import Alert from "../common/Alert";
 import { useContext } from "react";
 import userContext from "../userContext";
 
-/** Login user
+/** Form to login user
  *
  * Props:
  * - login: login function
@@ -12,32 +12,41 @@ import userContext from "../userContext";
  * State:
  * - formData: {username, password}
  * - errors: [error, ...]
+ *
+ * Context:
+ * - user
  */
 
 function LoginForm({ login }) {
+  console.log("Rendering LoginForm...");
+
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   });
   const [errors, setErrors] = useState([]);
-  const { token } = useContext(userContext);
-
+  const { user } = useContext(userContext);
+// TODO: docstrings for internal functions
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    const errors = await login(formData);
+    try {
+      await login(formData);
 
-    setErrors(errors);
+    } catch (errors) {
+      setErrors(errors);
+    }
   };
 
   function handleChange(evt) {
     const { name, value } = evt.target;
+
     setFormData(prevData => {
       return { ...prevData, [name]: value };
     });
   }
 
-  if (token) return <Navigate replace to="/" />;
+  if (user) return <Navigate replace to="/" />;
 
   return (
     <div>
@@ -49,6 +58,7 @@ function LoginForm({ login }) {
           name="username"
           value={formData.username}
           onChange={handleChange} />
+
         <label htmlFor="password">Password:</label>
         <input
           type="password"
@@ -59,6 +69,7 @@ function LoginForm({ login }) {
           onChange={handleChange} />
         <button type="submit">Login</button>
       </form>
+
       {errors.length > 0 &&
         <Alert messages={errors} className="alert alert-danger" />}
     </div>

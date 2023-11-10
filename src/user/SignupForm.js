@@ -5,15 +5,21 @@ import { Navigate } from "react-router-dom";
 import Alert from "../common/Alert";
 
 /**
- * Singup user
+ * Form to signup user
  *
- *Props:
+ * Props:
  * - signup: signup function
  *
+ * State:
  * - formData: {username, password, firstName, lastName, email}
  * - errors: [error, ...]
+ *
+ * Context:
+ * - user
  */
 function SignupForm({ signup }) {
+  console.log("Rendering SignupForm...");
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,24 +29,28 @@ function SignupForm({ signup }) {
   });
 
   const [errors, setErrors] = useState([]);
-  const { token } = useContext(userContext);
-
+  const { user } = useContext(userContext);
+//TODO: add docstring for internal functions
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    const errors = await signup(formData);
+    try {
+      await signup(formData);
 
-    setErrors(errors);
+    } catch (errors) {
+      setErrors(errors);
+    }
   };
 
   function handleChange(evt) {
     const { name, value } = evt.target;
+
     setFormData(prevData => {
       return { ...prevData, [name]: value };
     });
   }
 
-  if (token) return <Navigate replace to="/" />;
+  if (user) return <Navigate replace to="/" />;
 
   return (
     <div>
@@ -87,6 +97,7 @@ function SignupForm({ signup }) {
           onChange={handleChange} />
         <button type="submit">Submit</button>
       </form>
+
       {errors.length > 0 &&
         <Alert messages={errors} className="alert alert-danger" />}
 

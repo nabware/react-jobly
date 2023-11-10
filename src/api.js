@@ -53,6 +53,7 @@ class JoblyApi {
   // Individual API routes
 
   /** Takes optional filters and returns array of companies */
+
   static async getCompanies(filters) {
     if (filters?.nameLike?.length === 0) delete filters.nameLike;
 
@@ -62,6 +63,7 @@ class JoblyApi {
   }
 
   /** Get details on a company by handle. */
+
   static async getCompany(handle) {
     const res = await this.request(`companies/${handle}`);
 
@@ -69,6 +71,7 @@ class JoblyApi {
   }
 
   /** Takes optional filters and returns array of jobs */
+
   static async getJobs(filters) {
     if (filters?.title?.length === 0) delete filters.title;
 
@@ -85,16 +88,19 @@ class JoblyApi {
     return res.job;
   }
 
-  /** Takes username and password to login */
+  /** Takes login form data and returns token. */
+
   static async login(data) {
     const res = await this.request(`auth/token`, data, "post");
 
     return res.token;
   }
 
-  /** Sign up */
+  /** Takes signup form data and returns token. */
+
   static async signup(data) {
     const res = await this.request(`auth/register`, data, "post");
+
     return res.token;
   }
 
