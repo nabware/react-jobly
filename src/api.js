@@ -14,7 +14,7 @@ class JoblyApi {
   // DON'T MODIFY THIS TOKEN
   static token = "";
 
-  static async request(endpoint, data = {}, method = "GET") {
+  static async request(endpoint, data, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     const headers = {
       authorization: `Bearer ${JoblyApi.token}`,
@@ -26,7 +26,7 @@ class JoblyApi {
       : "";
 
     // set to undefined since the body property cannot exist on a GET method
-    const body = (method !== "GET")
+    const body = (method !== "GET" && data)
       ? JSON.stringify(data)
       : undefined;
 
@@ -119,6 +119,13 @@ class JoblyApi {
 
     return res.user;
   }
+
+    /** Takes username and job id to apply to job */
+    static async applyToJob(username, jobId) {
+      const res = await this.request(`users/${username}/jobs/${jobId}`, null, "POST");
+
+      return res.applied;
+    }
 
 }
 

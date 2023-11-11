@@ -44,7 +44,7 @@ function App() {
       try {
         const user = await JoblyApi.getUser(username);
 
-        setUser(user);
+        setUser({ ...user, applications: new Set(user.applications) });
 
       } catch (errors) {
         setToken(null);
@@ -84,10 +84,20 @@ function App() {
     setUser(currUser => ({ ...currUser, ...updatedUser }));
   }
 
+  /** Takes username and jobId and applys to job */
+  async function applyToJob(username, jobId) {
+    const appliedJobId = await JoblyApi.applyToJob(username, jobId);
+
+    setUser(currUser => ({
+      ...currUser,
+      applications: new Set([...currUser.applications, appliedJobId])
+    }));
+  }
+
   if (token && !user) return <LoadingSpinner />;
 
   return (
-    <userContext.Provider value={{ user }}>
+    <userContext.Provider value={{ user, applyToJob }}>
       <div className="App">
         <BrowserRouter>
           <Navigation logout={logout} />
