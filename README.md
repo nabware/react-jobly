@@ -5,9 +5,8 @@ Jobly is a full stack web application of a mock job board site where users can c
 # Table of Contents
 1. [Features](#Features)
 2. [Tech stack](#Tech-stack)
-3. [React Component Hierarchy](#React-component-hierarchy)
-4. [Install](#Install)
-6. [Deployment](#Deployment)
+3. [Install](#Install)
+4. [Deployment](#Deployment)
 
 ## Features<a name="Features"></a>
 * Logged out users have the option to sign up for an account. Authentication is manged by the backend. 
