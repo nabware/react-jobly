@@ -11,11 +11,9 @@ Jobly is a full stack web application of a mock job board site where users can c
 ## Features<a name="Features"></a>
 * Logged out users have the option to sign up for an account. Authentication is manged by the backend. 
 * Logged in users have access to view companies and jobs, apply for jobs, and the option to update their profile.
-* Users can apply and unapply for jobs to keep track of application status.
 * Search fields are available for users to filter through companies/jobs. 
 * Token stored on localStorage so that a user is not automatically logged out upon page refresh.
 * Alerts are displayed to the user when signing up for an account and editing the user profile if minimum requirements are not met.
-
 
 ## Tech stack<a name="Tech-stack"></a>
 
