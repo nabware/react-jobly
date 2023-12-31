@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Jobly Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jobly is a full stack web application of a mock job board site where users can create an account and login. Logged in users can browse through a list of companies and/or jobs with the ability to filter the list using the search bar. Each company has a list of job openings that a user can view and/or apply to. 
 
-## Available Scripts
+# Table of Contents
+1. [Features](#Features)
+2. [Tech stack](#Tech-stack)
+3. [React Component Hierarchy](#React-component-hierarchy)
+4. [Install](#Install)
+6. [Deployment](#Deployment)
 
-In the project directory, you can run:
+## Features<a name="Features"></a>:
+* Logged out users have the option to sign up for an account. Authentication is manged by the backend. 
+* Logged in users have access to view companies and jobs, apply for jobs, and the option to update their profile.
+* Users can apply and unapply for jobs to keep track of application status.
+* Search fields are available for users to filter through companies/jobs. 
+* Token stored on localStorage so that a user is not automatically logged out upon page refresh.
+* Alerts are displayed to the user when signing up for an account and editing the user profile if minimum requirements are not met.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech stack<a name="Tech-stack"></a>: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend ([GitHub Repo](https://github.com/nabware/express-jobly)):
+![alt text](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white&style=for-the-badge)
+![alt text](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge)
 
-### `npm test`
+### Frontend:
+![alt text](https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Database Management: 
+![alt text](https://img.shields.io/badge/-PostgresSQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge)
 
-### `npm run build`
+## React Component Hierarchy<a name="React-component-hierarchy"></a>: 
+![alt text](https://github.com/amathew195/react-jobly/blob/main/public/Images/ReactComponentHierarchy.jpeg?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Install<a name="Install"></a>: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project uses Node.js for the back-end JavaScript runtime environment. To install the backend dependencies from the package.json file:
+    
+    npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To start the sever (port 3000):
 
-### `npm run eject`
+    npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment<a name="Deployment"></a>:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend Deployment: 
+We used Surge to deploy our front end. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+First make sure Surge is installed: 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    npm install -g surge
 
-## Learn More
+Next, let’s make sure we define the environment variable for our frontend app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    REACT_APP_BASE_URL=YOUR_RENDER_BACKEND_URL npm run build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Now build your frontend.
+    
+    cp build/index.html build/200.html
+    surge build 
