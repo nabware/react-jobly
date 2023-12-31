@@ -9,7 +9,7 @@ Jobly is a full stack web application of a mock job board site where users can c
 4. [Install](#Install)
 6. [Deployment](#Deployment)
 
-## Features<a name="Features"></a>:
+## Features<a name="Features"></a>
 * Logged out users have the option to sign up for an account. Authentication is manged by the backend. 
 * Logged in users have access to view companies and jobs, apply for jobs, and the option to update their profile.
 * Users can apply and unapply for jobs to keep track of application status.
@@ -18,19 +18,19 @@ Jobly is a full stack web application of a mock job board site where users can c
 * Alerts are displayed to the user when signing up for an account and editing the user profile if minimum requirements are not met.
 
 
-## Tech stack<a name="Tech-stack"></a>: 
+## Tech stack<a name="Tech-stack"></a>
 
 ### Backend ([GitHub Repo](https://github.com/nabware/express-jobly)):
 ![alt text](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white&style=for-the-badge)
 ![alt text](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=for-the-badge)
 
-### Frontend:
+### Frontend
 ![alt text](https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge)
 
-### Database Management: 
+### Database Management
 ![alt text](https://img.shields.io/badge/-PostgresSQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge)
 
-## Install<a name="Install"></a>: 
+## Install<a name="Install"></a>
 
 This project uses Node.js for the back-end JavaScript runtime environment. To install the backend dependencies from the package.json file:
     
@@ -40,7 +40,7 @@ To start the sever (port 3000):
 
     npm start
 
-## Deployment<a name="Deployment"></a>:
+## Deployment<a name="Deployment"></a>
 
 ### Frontend Deployment: 
 We used Surge to deploy our front end. 
